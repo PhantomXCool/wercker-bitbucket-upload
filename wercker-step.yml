@@ -1,0 +1,24 @@
+name: bitbucket-upload-artifact
+version: 0.0.1
+description: upload file to bitbucket
+keywords:
+  - bitbucket
+  - oauth
+  - upload
+properties:
+  key:
+    type: string
+    required: true
+  secret:
+    type: string
+    required: true
+  file:
+    type: string
+    required: true
+  git_owner:
+    type: string
+    required: true
+  git_repository:
+    type: string
+    required: true
+
