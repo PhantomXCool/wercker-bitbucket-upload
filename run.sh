@@ -25,9 +25,12 @@ if [ ! -n "$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_GIT_REPOSITORY" ]; then
   exit 1
 fi
 
-pge=$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_GIT_OWNER/$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_GIT_REPOSITORY/downloads
+if [ ! -f "$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_FILE" ]; then
+    error "Not found file $WERCKER_BITBUCKET_UPLOAD_ARTIFACT_FILE"
+    exit 1
+fi
 
-urlDownload=https://api.bitbucket.org/2.0/repositories/$pge
+pge=$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_GIT_OWNER/$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_GIT_REPOSITORY/downloads
 
 secret_key=$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_KEY:$WERCKER_BITBUCKET_UPLOAD_ARTIFACT_SECRET
 
@@ -53,8 +56,10 @@ curl -v \
   --output ./utbb \
   "https://api.bitbucket.org/2.0/repositories/$pge"
 
-if [ -f ./utbb ] && [ ! -z "$(grep error ./utbb)" ]; then
-    error $(cat ./utbb)
+rs_error=$(grep error ./utbb)
+
+if [ -f ./utbb ] && [ -n "$rs_error" ]; then
+    cat ./utbb
     exit 1
 fi
 

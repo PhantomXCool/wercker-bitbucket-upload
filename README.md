@@ -2,7 +2,7 @@
 
 A wercker bitbucket uploader written in `bash` and `curl`.
 
-[![wercker status](https://app.wercker.com/status/7ed9584e773844e30cbd65b729595a14/m "wercker status")](https://app.wercker.com/project/bykey/7ed9584e773844e30cbd65b729595a14)
+[![wercker status](https://app.wercker.com/status/a468e950a4e0f97cf28f1eaad652c513/m "wercker status")](https://app.wercker.com/project/bykey/a468e950a4e0f97cf28f1eaad652c513)
 
 # Options
 
