@@ -1,5 +1,5 @@
 name: bitbucket-upload-artifact
-version: 0.0.1
+version: 0.0.2
 description: upload file to bitbucket
 keywords:
   - bitbucket
